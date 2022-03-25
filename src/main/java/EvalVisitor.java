@@ -35,6 +35,9 @@ public class EvalVisitor extends ExprBaseVisitor<Integer> {
         if (ctx.op.getType() == ExprParser.ADD){
             return left + right;
         }
+        else if (ctx.op.getType() == ExprParser.MOD) {
+            return left % right;
+        }
 
         // else must be SUB
         return left - right;

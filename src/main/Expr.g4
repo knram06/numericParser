@@ -9,12 +9,13 @@ stat: expr NEWLINE    # printExpr
     ;
 
 expr: expr op=(MUL | DIV) expr    # MulDiv
-    | expr op=(ADD | SUB) expr    # AddSub
-    | INT                      # int
-    | '(' expr ')'             # parens
+    | expr op=(ADD | SUB | MOD) expr    # AddSub
+    | INT                         # int
+    | '(' expr ')'                # parens
     ;
 
 MUL: '*';
+MOD: '%';
 DIV: '/';
 ADD: '+';
 SUB: '-';
