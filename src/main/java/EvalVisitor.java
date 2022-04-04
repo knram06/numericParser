@@ -29,6 +29,12 @@ public class EvalVisitor extends ExprBaseVisitor<Integer> {
 
     @Override
     public Integer visitAddSub(ExprParser.AddSubContext ctx) {
+
+        // for op tree, you're now at an op node
+        // so create a new optree node
+        // scan children, if you see another op node, keep creating op node
+
+
         int left = visit(ctx.expr(0));
         int right = visit(ctx.expr(1));
 
@@ -50,7 +56,6 @@ public class EvalVisitor extends ExprBaseVisitor<Integer> {
 
     @Override
     public Integer visitInt(ExprParser.IntContext ctx) {
-        Integer value = Integer.valueOf(ctx.INT().getText());
-        return value;
+        return Integer.valueOf(ctx.INT().getText());
     }
 }
